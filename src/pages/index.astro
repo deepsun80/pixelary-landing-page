@@ -109,109 +109,79 @@ import Footer from '../components/Footer.astro';
 
   // ===== SCENE 2: Services Animation =====
 
-  // Pin scene 2
-  // ScrollTrigger.create({
-  //   trigger: '#scene-2',
-  //   start: 'top top',
-  //   end: '+=600',
-  //   pin: true,
-  // });
+  // Set initial states
+  gsap.set('#diamond-single', { opacity: 0 });
+  gsap.set('#diamonds-container', { opacity: 0 });
+  gsap.set('#diamond-1', { x: 300 });
+  gsap.set('#diamond-3', { x: -300 });
+  gsap.set('#diamond-content-1', { opacity: 0 });
+  gsap.set('#diamond-content-2', { opacity: 0 });
+  gsap.set('#diamond-content-3', { opacity: 0 });
 
-  // // Step 1: Single diamond fades in
-  // gsap.to('#diamond-single', {
-  //   opacity: 1,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: 'top top',
-  //     end: '+=100',
-  //     scrub: true,
-  //   },
-  // });
+  // Create timeline for Scene 2
+  const scene2Tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#scene-2',
+      start: 'top top',
+      end: '+=1000',
+      pin: true,
+      scrub: true,
+    },
+  });
 
-  // // Step 2: Single diamond fades out as three diamonds appear
-  // gsap.to('#diamond-single', {
-  //   opacity: 0,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=100',
-  //     end: '+=150',
-  //     scrub: true,
-  //   },
-  // });
+  // Step 1: Single diamond fades in (0% - 15% of timeline)
+  scene2Tl.to('#diamond-single', {
+    opacity: 1,
+    duration: 0.15,
+  });
 
-  // // Step 2: Three diamonds container fades in
-  // gsap.to('#diamonds-container', {
-  //   opacity: 1,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=100',
-  //     end: '+=150',
-  //     scrub: true,
-  //   },
-  // });
+  // Pause - diamond sits visible (15% - 25%)
+  scene2Tl.to({}, { duration: 0.1 });
 
-  // // Step 2: Diamonds spread horizontally from center
-  // // Set initial positions
-  // gsap.set('#diamond-1', { x: 300 });
-  // gsap.set('#diamond-3', { x: -300 });
+  // Step 2: Single diamond fades out, three diamonds fade in (25% - 35%)
+  scene2Tl.to('#diamond-single', {
+    opacity: 0,
+    duration: 0.1,
+  });
 
-  // // Animate TO final position (x: 0)
-  // gsap.to('#diamond-1', {
-  //   x: 0,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=100',
-  //     end: '+=250',
-  //     scrub: true,
-  //   },
-  // });
+  scene2Tl.to(
+    '#diamonds-container',
+    {
+      opacity: 1,
+      duration: 0.1,
+    },
+    '<',
+  ); // Same time as above
 
-  // gsap.to('#diamond-3', {
-  //   x: 0,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=100',
-  //     end: '+=250',
-  //     scrub: true,
-  //   },
-  // });
+  // Step 3: Diamonds spread horizontally (35% - 60%)
+  scene2Tl.to(
+    '#diamond-1',
+    {
+      x: 0,
+      duration: 0.25,
+    },
+    '<',
+  );
 
-  // // Step 3: Content fades in (slightly after diamonds start spreading)
-  // gsap.to('#diamond-content-1', {
-  //   opacity: 1,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=200',
-  //     end: '+=350',
-  //     scrub: true,
-  //   },
-  // });
+  scene2Tl.to(
+    '#diamond-3',
+    {
+      x: 0,
+      duration: 0.25,
+    },
+    '<',
+  );
 
-  // gsap.to('#diamond-content-2', {
-  //   opacity: 1,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=200',
-  //     end: '+=350',
-  //     scrub: true,
-  //   },
-  // });
+  // Step 4: Content fades in (50% - 70%)
+  scene2Tl.to(
+    ['#diamond-content-1', '#diamond-content-2', '#diamond-content-3'],
+    {
+      opacity: 1,
+      duration: 0.2,
+    },
+    '-=0.1',
+  ); // Slightly overlapping with spread
 
-  // gsap.to('#diamond-content-3', {
-  //   opacity: 1,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '#scene-2',
-  //     start: '+=200',
-  //     end: '+=350',
-  //     scrub: true,
-  //   },
-  // });
+  // Hold at end (70% - 100%) - diamonds stay visible
+  scene2Tl.to({}, { duration: 0.3 });
 </script>

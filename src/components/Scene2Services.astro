@@ -111,9 +111,9 @@
     width: 300px;
     height: 300px;
     transform: rotate(45deg);
-    opacity: 1;
+    opacity: 0;
     background: linear-gradient(135deg, #f9bc09, #1aaa62);
-    padding: 10px;
+    padding: 20px;
     border-radius: 20px;
   }
 
@@ -132,7 +132,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    opacity: 1;
+    opacity: 0;
   }
 
   /* Individual diamond */
@@ -183,7 +183,7 @@
     text-align: center;
     padding: 20px;
     max-width: 180px;
-    opacity: 1;
+    opacity: 0;
   }
 
   .icon-circle {
@@ -229,17 +229,21 @@
   @media (max-width: 900px) {
     .diamonds-container {
       flex-direction: column;
-      gap: 10px;
     }
 
     .diamond {
-      width: 240px;
-      height: 240px;
+      width: 280px;
+      height: 280px;
+    }
+
+    .diamond-single {
+      width: 250px;
+      height: 250px;
     }
 
     .diamond-border {
-      width: 170px;
-      height: 170px;
+      width: 250px;
+      height: 250px;
     }
 
     .diamond-content {
@@ -247,7 +251,7 @@
     }
 
     .diamond-content h3 {
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .diamond-content p {

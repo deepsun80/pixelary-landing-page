@@ -23,86 +23,76 @@ import Footer from '../components/Footer.astro';
 
   // ===== SCENE 1: Hero Animation =====
 
-  // Pin scene 1
-  ScrollTrigger.create({
-    trigger: '#scene-1',
-    start: 'top top',
-    end: '+=500',
-    pin: true,
+  // Set initial states
+  gsap.set('#header', { opacity: 0, y: -70 });
+  gsap.set('#header-logo', { opacity: 0 });
+
+  // Phase 1: Pinned animation (logo shrinks and moves left)
+  const scene1Tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: 'top top',
+      end: '+=400',
+      pin: true,
+      scrub: true,
+    },
   });
 
-  // Fade out tagline
-  gsap.to('#hero-tagline', {
+  // Fade out tagline (0% - 30%)
+  scene1Tl.to('#hero-tagline', {
     opacity: 0,
     y: -20,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#scene-1',
-      start: 'top top',
-      end: '+=150',
-      scrub: true,
-    },
+    duration: 0.3,
   });
 
-  // Fade out scroll indicator
-  gsap.to('#scroll-indicator', {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#scene-1',
-      start: 'top top',
-      end: '+=100',
-      scrub: true,
+  // Fade out scroll indicator at same time (0% - 25%)
+  scene1Tl.to(
+    '#scroll-indicator',
+    {
+      opacity: 0,
+      duration: 0.25,
     },
-  });
+    0,
+  );
 
-  // Shrink and move hero logo up and left
-  gsap.to('#hero-logo', {
-    scale: 0.2,
-    x: -515,
-    y: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#scene-1',
-      start: 'top top',
-      end: '+=300',
-      scrub: true,
+  // Shrink and move hero logo left only (10% - 70%)
+  scene1Tl.to(
+    '#hero-logo',
+    {
+      scale: 0.2,
+      x: -515,
+      duration: 0.6,
     },
-  });
+    0.1,
+  );
 
-  // Fade out hero logo at the end
-  gsap.to('#hero-logo', {
-    opacity: 0,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#scene-1',
-      start: '+=300',
-      end: '+=350',
-      scrub: true,
-    },
-  });
+  // Hold at end (70% - 100%)
+  scene1Tl.to({}, { duration: 0.3 });
 
-  // Show header
+  // Phase 2: After pin releases - header and logo crossfade
+  // This triggers when scene-1 starts scrolling up (after pin ends)
+
+  // Header slides in as scene scrolls away
   gsap.to('#header', {
     opacity: 1,
     y: 0,
     ease: 'none',
     scrollTrigger: {
       trigger: '#scene-1',
-      start: '+=100',
-      end: '+=150',
+      start: 'bottom 90%', // When bottom of scene-1 is at 90% of viewport
+      end: 'bottom 60%', // When bottom of scene-1 is at 60% of viewport
       scrub: true,
     },
   });
 
-  // Show header logo
+  // Header logo fades in (slightly after hero logo starts fading)
   gsap.to('#header-logo', {
     opacity: 1,
     ease: 'none',
     scrollTrigger: {
       trigger: '#scene-1',
-      start: '+=400',
-      end: '+=450',
+      start: 'bottom 60%',
+      end: 'bottom 30%',
       scrub: true,
     },
   });

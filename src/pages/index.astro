@@ -1,365 +1,107 @@
 ---
-// Astro frontmatter - runs at build time
-// We'll import GSAP in the client-side script below
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Scene1Hero from '../components/Scene1Hero.astro';
+import Scene2Services from '../components/Scene2Services.astro';
+import Scene3Contact from '../components/Scene3Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixelary | Engineered for Impact. Built to Scale.</title>
-    <meta
-      name="description"
-      content="Pixelary - We hand-code lightning-fast sites specifically engineered to convert passive visitors into active callers."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="/logo-color.png" />
-  </head>
+<BaseLayout>
+  <Header />
+  <Scene1Hero />
+  <Scene2Services />
+  <Scene3Contact />
+  <Footer />
+</BaseLayout>
 
-  <body>
-    <!-- Header (hidden initially, appears on scroll) -->
-    <header class="header" id="header">
-      <div class="header-inner">
-        <img
-          src="/logo-color.png"
-          alt="Pixelary"
-          class="header-logo"
-          id="header-logo"
-        />
-        <button class="btn-get-in-touch">Get in Touch</button>
-      </div>
-    </header>
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-    <!-- Scene 1: Hero -->
-    <section class="scene scene-1" id="scene-1">
-      <div class="hero-content">
-        <img
-          src="/logo-color.png"
-          alt="Pixelary"
-          class="hero-logo"
-          id="hero-logo"
-        />
-        <p class="hero-tagline" id="hero-tagline">
-          Engineered for Impact. Built to Scale.
-        </p>
-      </div>
-      <div class="scroll-indicator" id="scroll-indicator">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M7 10l5 5 5-5"></path>
-        </svg>
-      </div>
-    </section>
+  gsap.registerPlugin(ScrollTrigger);
 
-    <!-- Scene 2: Services (placeholder) -->
-    <section class="scene scene-2" id="scene-2">
-      <div class="scene-2-content">
-        <!-- Diamonds will go here -->
-      </div>
-    </section>
+  // Pin scene 1
+  ScrollTrigger.create({
+    trigger: '#scene-1',
+    start: 'top top',
+    end: '+=500',
+    pin: true,
+  });
 
-    <!-- Scene 3: Contact (placeholder) -->
-    <section class="scene scene-3" id="scene-3">
-      <!-- Contact content will go here -->
-    </section>
+  // Fade out tagline
+  gsap.to('#hero-tagline', {
+    opacity: 0,
+    y: -20,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: 'top top',
+      end: '+=150',
+      scrub: true,
+    },
+  });
 
-    <!-- Footer (placeholder) -->
-    <footer class="footer" id="footer">
-      <!-- Footer content will go here -->
-    </footer>
+  // Fade out scroll indicator
+  gsap.to('#scroll-indicator', {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: 'top top',
+      end: '+=100',
+      scrub: true,
+    },
+  });
 
-    <style>
-      /* ===== CSS Reset & Base ===== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+  // Shrink and move hero logo up and left
+  gsap.to('#hero-logo', {
+    scale: 0.2,
+    x: -515,
+    y: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: 'top top',
+      end: '+=300',
+      scrub: true,
+    },
+  });
 
-      html {
-        scroll-behavior: smooth;
-      }
+  // Fade out hero logo at the end
+  gsap.to('#hero-logo', {
+    opacity: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: '+=300',
+      end: '+=350',
+      scrub: true,
+    },
+  });
 
-      body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #2d2d2d;
-        color: #2d2d2d;
-        overflow-x: hidden;
-      }
+  // Show header
+  gsap.to('#header', {
+    opacity: 1,
+    y: 0,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: '+=100',
+      end: '+=150',
+      scrub: true,
+    },
+  });
 
-      /* ===== Header ===== */
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 70px;
-        background-color: #ffffff;
-        z-index: 1000;
-        opacity: 0;
-        transform: translateY(-100%);
-        /* opacity: 0.5; /* Changed from 0 */
-        transform: translateY(0); Changed from translateY(-100%) */
-      }
-
-      .header-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 24px;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .header-logo {
-        height: 60px;
-        width: auto;
-        opacity: 0;
-        /* opacity: 1; */
-      }
-
-      .btn-get-in-touch {
-        padding: 10px 24px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        color: #2d2d2d;
-        background: transparent;
-        border: 2px solid transparent;
-        border-radius: 25px;
-        cursor: pointer;
-        position: relative;
-        background-clip: padding-box;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .btn-get-in-touch::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 25px;
-        padding: 2px;
-        background: linear-gradient(135deg, #179f9d, #4918b2);
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-      }
-
-      .btn-get-in-touch:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(73, 24, 178, 0.3);
-      }
-
-      /* ===== Scene Base ===== */
-      .scene {
-        min-height: 100vh;
-        width: 100%;
-        position: relative;
-      }
-
-      /* ===== Scene 1: Hero ===== */
-      .scene-1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #f5f5f5;
-      }
-
-      .hero-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 24px;
-      }
-
-      .hero-logo {
-        width: min(600px, 80vw);
-        height: auto;
-        z-index: 1001;
-        position: relative;
-        top: 0;
-        left: 0;
-      }
-
-      .hero-tagline {
-        font-size: clamp(16px, 3vw, 22px);
-        font-weight: 500;
-        color: #2d2d2d;
-        text-align: center;
-        letter-spacing: 0.5px;
-      }
-
-      .scroll-indicator {
-        position: absolute;
-        bottom: 40px;
-        color: #2d2d2d;
-        opacity: 0.6;
-        animation: bounce 2s ease-in-out infinite;
-      }
-
-      @keyframes bounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(8px);
-        }
-      }
-
-      /* ===== Scene 2: Services ===== */
-      .scene-2 {
-        background-color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* ===== Scene 3: Contact ===== */
-      .scene-3 {
-        background: linear-gradient(135deg, #f5f5f5 50%, transparent 50%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* ===== Footer ===== */
-      .footer {
-        background-color: #2d2d2d;
-        padding: 40px 24px;
-        text-align: center;
-      }
-
-      /* ===== Responsive ===== */
-      @media (max-width: 768px) {
-        .header-inner {
-          padding: 0 16px;
-        }
-
-        .btn-get-in-touch {
-          padding: 8px 18px;
-          font-size: 13px;
-        }
-
-        .hero-logo {
-          width: min(300px, 80vw);
-        }
-
-        .scroll-indicator {
-          bottom: 24px;
-        }
-      }
-    </style>
-
-    <script>
-      import { gsap } from 'gsap';
-      import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Pin scene 1
-      ScrollTrigger.create({
-        trigger: '#scene-1',
-        start: 'top top',
-        end: '+=500',
-        pin: true,
-      });
-
-      // Fade out tagline
-      gsap.to('#hero-tagline', {
-        opacity: 0,
-        y: -20,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#scene-1',
-          start: 'top top',
-          end: '+=150',
-          scrub: true,
-        },
-      });
-
-      // Fade out scroll indicator
-      gsap.to('#scroll-indicator', {
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#scene-1',
-          start: 'top top',
-          end: '+=100',
-          scrub: true,
-        },
-      });
-
-      // Shrink and move hero logo up and left, then fade out
-      gsap.to('#hero-logo', {
-        scale: 0.2,
-        x: -515,
-        y: -0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#scene-1',
-          start: 'top top',
-          end: '+=300',
-          scrub: true,
-        },
-      });
-
-      // Fade out hero logo at the end
-      gsap.to('#hero-logo', {
-        opacity: 0,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#scene-1',
-          start: '+=300',
-          end: '+=350',
-          scrub: true,
-        },
-      });
-
-      // Show header
-        gsap.to('#header', {
-          opacity: 1,
-          y: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#scene-1',
-            start: '+=100',
-            end: '+=150',
-            scrub: true,
-          },
-        });
-
-      // Show header logo (fades in as hero logo fades out)
-        gsap.to('#header-logo', {
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '#scene-1',
-            start: '+=400',
-            end: '+=450',
-            scrub: true,
-          },
-        });
-    </script>
-  </body>
-</html>
+  // Show header logo
+  gsap.to('#header-logo', {
+    opacity: 1,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#scene-1',
+      start: '+=400',
+      end: '+=450',
+      scrub: true,
+    },
+  });
+</script>

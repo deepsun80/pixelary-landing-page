@@ -21,6 +21,8 @@ import Footer from '../components/Footer.astro';
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // ===== SCENE 1: Hero Animation =====
+
   // Pin scene 1
   ScrollTrigger.create({
     trigger: '#scene-1',
@@ -104,4 +106,112 @@ import Footer from '../components/Footer.astro';
       scrub: true,
     },
   });
+
+  // ===== SCENE 2: Services Animation =====
+
+  // Pin scene 2
+  // ScrollTrigger.create({
+  //   trigger: '#scene-2',
+  //   start: 'top top',
+  //   end: '+=600',
+  //   pin: true,
+  // });
+
+  // // Step 1: Single diamond fades in
+  // gsap.to('#diamond-single', {
+  //   opacity: 1,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: 'top top',
+  //     end: '+=100',
+  //     scrub: true,
+  //   },
+  // });
+
+  // // Step 2: Single diamond fades out as three diamonds appear
+  // gsap.to('#diamond-single', {
+  //   opacity: 0,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=100',
+  //     end: '+=150',
+  //     scrub: true,
+  //   },
+  // });
+
+  // // Step 2: Three diamonds container fades in
+  // gsap.to('#diamonds-container', {
+  //   opacity: 1,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=100',
+  //     end: '+=150',
+  //     scrub: true,
+  //   },
+  // });
+
+  // // Step 2: Diamonds spread horizontally from center
+  // // Set initial positions
+  // gsap.set('#diamond-1', { x: 300 });
+  // gsap.set('#diamond-3', { x: -300 });
+
+  // // Animate TO final position (x: 0)
+  // gsap.to('#diamond-1', {
+  //   x: 0,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=100',
+  //     end: '+=250',
+  //     scrub: true,
+  //   },
+  // });
+
+  // gsap.to('#diamond-3', {
+  //   x: 0,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=100',
+  //     end: '+=250',
+  //     scrub: true,
+  //   },
+  // });
+
+  // // Step 3: Content fades in (slightly after diamonds start spreading)
+  // gsap.to('#diamond-content-1', {
+  //   opacity: 1,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=200',
+  //     end: '+=350',
+  //     scrub: true,
+  //   },
+  // });
+
+  // gsap.to('#diamond-content-2', {
+  //   opacity: 1,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=200',
+  //     end: '+=350',
+  //     scrub: true,
+  //   },
+  // });
+
+  // gsap.to('#diamond-content-3', {
+  //   opacity: 1,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '#scene-2',
+  //     start: '+=200',
+  //     end: '+=350',
+  //     scrub: true,
+  //   },
+  // });
 </script>

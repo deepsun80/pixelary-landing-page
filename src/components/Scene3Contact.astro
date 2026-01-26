@@ -3,14 +3,180 @@
 ---
 
 <section class="scene scene-3" id="scene-3">
-  <!-- Contact content will go here -->
+  <!-- Orange gradient sphere -->
+  <div class="sphere" id="sphere"></div>
+
+  <!-- Content container -->
+  <div class="scene-3-content">
+    <!-- Left side: Text -->
+    <div class="contact-text" id="contact-text">
+      <h2>Ready to Modernize?</h2>
+      <p>We are a team of Austin engineers ready to build your future.</p>
+    </div>
+
+    <!-- Right side: Contact form -->
+    <div class="contact-form-wrapper" id="contact-form-wrapper">
+      <form class="contact-form">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="email" name="email" placeholder="Email" />
+        <textarea name="message" placeholder="Message" rows="4"></textarea>
+        <button type="submit" class="btn-send">Send</button>
+      </form>
+    </div>
+  </div>
 </section>
 
-<style>
+<style is:global>
   .scene-3 {
-    background: linear-gradient(135deg, #f5f5f5 50%, transparent 50%);
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Orange gradient sphere */
+  .sphere {
+    position: absolute;
+    width: 1200px;
+    height: 1200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f9bc09, #fb751e);
+    right: -180px;
+    top: 10%;
+  }
+
+  /* Content container */
+  .scene-3-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    width: 100%;
+    padding: 0 24px;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Left side text */
+  .contact-text {
+    flex: 1;
+  }
+
+  .contact-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    color: #2d2d2d;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .contact-text p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    color: #2d2d2d;
+    line-height: 1.5;
+  }
+
+  /* Contact form wrapper - glassmorphism */
+  .contact-form-wrapper {
+    flex: 1;
+    /* max-width: 400px; */
+  }
+
+  .contact-form {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #2d2d2d;
+    outline: none;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #888888;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    box-shadow: 0 0 0 2px rgba(23, 159, 157, 0.3);
+  }
+
+  .contact-form textarea {
+    resize: none;
+  }
+
+  .btn-send {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #179f9d, #4918b2);
+    border: none;
+    border-radius: 25px;
+    padding: 14px 32px;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .btn-send:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 20px rgba(73, 24, 178, 0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .scene-3-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 40px;
+    }
+
+    .contact-text {
+      order: 1;
+    }
+
+    .contact-form-wrapper {
+      order: 2;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .sphere {
+      width: 400px;
+      height: 400px;
+      right: -150px;
+      top: auto;
+      bottom: -100px;
+      transform: none;
+    }
+
+    .contact-form {
+      padding: 24px;
+    }
   }
 </style>

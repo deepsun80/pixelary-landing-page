@@ -55,12 +55,47 @@ import Footer from '../components/Footer.astro';
     0,
   );
 
+  // Calculate the x offset dynamically
+  const calculateLogoOffset = () => {
+    const heroLogo = document.getElementById('hero-logo');
+    const headerLogo = document.getElementById('header-logo');
+    const header = document.getElementById('header');
+
+    // Temporarily make header visible for measurement
+    const originalOpacity = header.style.opacity;
+    const originalTransform = header.style.transform;
+    header.style.opacity = '1';
+    header.style.transform = 'translateY(0)';
+
+    const heroRect = heroLogo.getBoundingClientRect();
+    const headerRect = headerLogo.getBoundingClientRect();
+
+    // Restore header styles
+    header.style.opacity = originalOpacity;
+    header.style.transform = originalTransform;
+
+    // Current center of hero logo
+    const heroCenterX = heroRect.left + heroRect.width / 2;
+
+    // Target center (where header logo center is)
+    const headerCenterX = headerRect.left + headerRect.width / 2;
+
+    // The distance we need to move
+    const deltaX = headerCenterX - heroCenterX;
+
+    return deltaX;
+  };
+
+  const logoOffsetX = calculateLogoOffset();
+
   // Shrink and move hero logo left only (10% - 70%)
+  const isMobile = window.innerWidth <= 768;
+
   scene1Tl.to(
     '#hero-logo',
     {
-      scale: 0.2,
-      x: -515,
+      scale: isMobile ? 0.4 : 0.2,
+      x: logoOffsetX,
       duration: 0.6,
     },
     0.1,

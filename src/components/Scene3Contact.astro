@@ -19,10 +19,11 @@
 
     <!-- Right side: Contact form -->
     <div class="contact-form-wrapper" id="contact-form-wrapper">
-      <form class="contact-form">
-        <input type="text" name="name" placeholder="Name" />
-        <input type="email" name="email" placeholder="Email" />
-        <textarea name="message" placeholder="Message" rows="4"></textarea>
+      <form class="contact-form" action="/api/contact" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" rows="4" required
+        ></textarea>
         <button type="submit" class="btn-send">Send</button>
       </form>
     </div>

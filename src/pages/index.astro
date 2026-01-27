@@ -61,6 +61,8 @@ import Footer from '../components/Footer.astro';
     const headerLogo = document.getElementById('header-logo');
     const header = document.getElementById('header');
 
+    if (!heroLogo || !headerLogo || !header) return -515; // Fallback value
+
     // Temporarily make header visible for measurement
     const originalOpacity = header.style.opacity;
     const originalTransform = header.style.transform;

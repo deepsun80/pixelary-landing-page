@@ -271,4 +271,15 @@ import Footer from '../components/Footer.astro';
 
   // Hold at end (70% - 100%) - everything stays visible
   scene3Tl.to({}, { duration: 0.3 });
+
+  // ===== HEADER BUTTON: Scroll to Contact =====
+  const btnGetInTouch = document.getElementById('btn-get-in-touch');
+  if (btnGetInTouch) {
+    btnGetInTouch.addEventListener('click', () => {
+      const contactForm = document.getElementById('contact-form-wrapper');
+      if (contactForm) {
+        contactForm.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 </script>

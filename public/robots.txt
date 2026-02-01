@@ -1,0 +1,6 @@
+# Robots.txt for pixelary.io
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pixelary.io/sitemap.xml

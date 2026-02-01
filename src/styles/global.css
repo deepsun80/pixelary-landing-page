@@ -1,3 +1,18 @@
+/* ===== CSS Custom Properties ===== */
+:root {
+  --color-slate: #2a3f52;
+  --color-teal: #0097a7;
+  --color-gold: #f5ad19;
+  --color-light-gold: #f5cc7c;
+  --color-gold-hover: #d4941c;
+  --color-white: #ffffff;
+  --color-light-gray: #f5f7f9;
+
+  --font-cursive: 'Allura', cursive;
+  --font-sans-serif: 'Roboto', sans-serif;
+  --font-serif: 'Libre Baskerville', serif;
+}
+
 /* ===== CSS Reset & Base ===== */
 * {
   margin: 0;
@@ -10,9 +25,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #2d2d2d;
-  color: #2d2d2d;
+  background-color: var(--color-light-gray);
   overflow-x: hidden;
 }
 

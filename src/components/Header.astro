@@ -48,38 +48,19 @@
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #2d2d2d;
-    background: transparent;
-    border: 2px solid transparent;
-    border-radius: 25px;
+    color: var(--color-white);
+    background: var(--color-gold);
+    border: 2px solid var(--color-slate);
+    border-radius: 6px;
     cursor: pointer;
-    position: relative;
-    background-clip: padding-box;
     transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .btn-get-in-touch::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 25px;
-    padding: 2px;
-    background: linear-gradient(135deg, #179f9d, #4918b2);
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+      background-color 0.2s ease,
+      transform 0.2s ease;
   }
 
   .btn-get-in-touch:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(73, 24, 178, 0.3);
+    background: var(--color-gold-hover);
+    transform: scale(1.02);
   }
 
   @media (max-width: 768px) {

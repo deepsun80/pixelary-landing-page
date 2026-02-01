@@ -10,15 +10,17 @@
   <div class="cards-container" id="diamonds-container">
     <!-- Card 1: Web Design & SEO -->
     <div class="service-card" id="diamond-1">
-      <div class="card-accent">
-        <div class="accent-rect accent-rect-1"></div>
-        <div class="accent-rect accent-rect-2"></div>
-        <div class="accent-rect accent-rect-3"></div>
-      </div>
-      <div class="card-content" id="diamond-content-1">
+      <div class="card-header">
+        <div class="card-accent">
+          <div class="accent-rect accent-rect-1"></div>
+          <div class="accent-rect accent-rect-2"></div>
+          <div class="accent-rect accent-rect-3"></div>
+        </div>
         <div class="icon-wrapper">
           <img src="/desktop-icon.png" alt="Web Design" class="service-icon" />
         </div>
+      </div>
+      <div class="card-content" id="diamond-content-1">
         <h3>Web Design & SEO</h3>
         <p>
           Stop losing customers to slow templates. We engineer custom digital
@@ -29,15 +31,21 @@
 
     <!-- Card 2: Intelligent Capture -->
     <div class="service-card" id="diamond-2">
-      <div class="card-accent">
-        <div class="accent-rect accent-rect-1"></div>
-        <div class="accent-rect accent-rect-2"></div>
-        <div class="accent-rect accent-rect-3"></div>
+      <div class="card-header">
+        <div class="card-accent">
+          <div class="accent-rect accent-rect-1"></div>
+          <div class="accent-rect accent-rect-2"></div>
+          <div class="accent-rect accent-rect-3"></div>
+        </div>
+        <div class="icon-wrapper">
+          <img
+            src="/pin-icon.png"
+            alt="Intelligent Capture"
+            class="service-icon"
+          />
+        </div>
       </div>
       <div class="card-content" id="diamond-content-2">
-        <div class="icon-wrapper">
-          <img src="/pin-icon.png" alt="Intelligent Capture" class="service-icon" />
-        </div>
         <h3>Intelligent Capture</h3>
         <p>
           Your business should never sleep. We implement 'Always-On' technology
@@ -48,15 +56,21 @@
 
     <!-- Card 3: Client Retention -->
     <div class="service-card" id="diamond-3">
-      <div class="card-accent">
-        <div class="accent-rect accent-rect-1"></div>
-        <div class="accent-rect accent-rect-2"></div>
-        <div class="accent-rect accent-rect-3"></div>
+      <div class="card-header">
+        <div class="card-accent">
+          <div class="accent-rect accent-rect-1"></div>
+          <div class="accent-rect accent-rect-2"></div>
+          <div class="accent-rect accent-rect-3"></div>
+        </div>
+        <div class="icon-wrapper">
+          <img
+            src="/funnel-icon.png"
+            alt="Client Retention"
+            class="service-icon"
+          />
+        </div>
       </div>
       <div class="card-content" id="diamond-content-3">
-        <div class="icon-wrapper">
-          <img src="/funnel-icon.png" alt="Client Retention" class="service-icon" />
-        </div>
         <h3>Client Retention</h3>
         <p>
           We don't just find customers; we keep them. Our systems automatically
@@ -92,14 +106,14 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 24px;
+    gap: 48px;
     opacity: 0;
     padding: 40px 24px;
   }
 
   /* Individual service card */
   .service-card {
-    width: 280px;
+    width: 380px;
     min-height: 340px;
     background: var(--color-white);
     border-radius: 16px;
@@ -110,15 +124,22 @@
     flex-direction: column;
   }
 
+  /* Card header row (accent + icon) */
+  .card-header {
+    display: flex;
+    gap: 2em;
+    align-items: flex-start;
+    padding: 0;
+  }
+
   /* Orange accent with white rectangles */
   .card-accent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     background: var(--color-gold);
     border-radius: 0 0 16px 0;
+    position: relative;
+    flex-shrink: 0;
   }
 
   .accent-rect {
@@ -148,9 +169,19 @@
     left: 8px;
   }
 
+  .icon-wrapper {
+    padding: 16px 24px 0 0;
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
   /* Card content */
   .card-content {
-    padding: 70px 24px 32px;
+    padding: 16px 24px 32px;
     text-align: left;
     opacity: 0;
     flex: 1;
@@ -158,19 +189,9 @@
     flex-direction: column;
   }
 
-  .icon-wrapper {
-    margin-bottom: 16px;
-  }
-
-  .service-icon {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-  }
-
   .card-content h3 {
     font-family: var(--font-serif);
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 700;
     color: var(--color-slate);
     margin-bottom: 12px;
@@ -203,7 +224,7 @@
     }
 
     .card-content {
-      padding: 70px 20px 24px;
+      padding: 16px 20px 24px;
     }
 
     .card-content h3 {

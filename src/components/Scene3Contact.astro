@@ -25,21 +25,27 @@
         <input type="email" name="email" placeholder="Email Address" required />
         <textarea name="message" placeholder="Your Message" rows="4" required
         ></textarea>
-        <button type="submit" class="btn-send">Send Message</button>
+        <button type="submit" class="btn-send" id="btn-send"
+          >Send Message</button
+        >
         <p class="form-status" id="form-status"></p>
       </form>
     </div>
   </div>
 
   <script>
-    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    const form = document.getElementById(
+      'contact-form',
+    ) as HTMLFormElement | null;
     const status = document.getElementById('form-status');
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const formData = new FormData(form);
-      const submitBtn = form.querySelector('.btn-send') as HTMLButtonElement | null;
+      const submitBtn = form.querySelector(
+        '.btn-send',
+      ) as HTMLButtonElement | null;
       if (submitBtn) {
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;

@@ -276,9 +276,9 @@ import Footer from '../components/Footer.astro';
   const btnGetInTouch = document.getElementById('btn-get-in-touch');
   if (btnGetInTouch) {
     btnGetInTouch.addEventListener('click', () => {
-      const contactForm = document.getElementById('contact-form-wrapper');
-      if (contactForm) {
-        contactForm.scrollIntoView({ behavior: 'smooth' });
+      const btnSend = document.getElementById('btn-send');
+      if (btnSend) {
+        btnSend.scrollIntoView({ behavior: 'smooth' });
       }
     });
   }

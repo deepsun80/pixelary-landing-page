@@ -3,251 +3,86 @@
 ---
 
 <section class="scene scene-2" id="scene-2">
-  <!-- Single card that will fade in first -->
-  <div class="card-single" id="diamond-single"></div>
-
-  <!-- Three cards container -->
-  <div class="cards-container" id="diamonds-container">
-    <!-- Card 1: Web Design & SEO -->
-    <div class="service-card" id="diamond-1">
-      <div class="card-header">
-        <div class="card-accent">
-          <div class="accent-rect accent-rect-1"></div>
-          <div class="accent-rect accent-rect-2"></div>
-          <div class="accent-rect accent-rect-3"></div>
-        </div>
-        <div class="icon-wrapper">
-          <img
-            src="/desktop-icon.webp"
-            alt="Web Design"
-            class="service-icon"
-            width="60"
-            height="60"
-            loading="lazy"
-          />
-        </div>
-      </div>
-      <div class="card-content" id="diamond-content-1">
-        <h3>Web Design & SEO</h3>
-        <p>
-          Stop losing customers to slow templates. We engineer custom digital
-          experiences designed to rank high and convert visitors into leads.
-        </p>
-      </div>
+  <div class="services-inner">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-lg">What We Build</span>
+      <h2>Three systems, one engine.</h2>
     </div>
+    <div class="cards-container" id="diamonds-container">
+      <!-- Card 1: Web Design & SEO -->
+      <div class="service-card" id="diamond-1">
+        <div class="card-header">
+          <span class="card-num">01</span>
+          <div class="icon-wrapper">
+            <img
+              src="/desktop-icon.png"
+              alt="Web Design"
+              class="service-icon"
+              width="46"
+              height="46"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="card-content" id="diamond-content-1">
+          <h3>Web Design<br />&amp; SEO</h3>
+          <p>
+            Stop losing customers to slow templates. We engineer custom digital
+            experiences designed to rank high and convert visitors into leads.
+          </p>
+        </div>
+        <div class="card-hair"><i></i></div>
+      </div>
 
-    <!-- Card 2: Intelligent Capture -->
-    <div class="service-card" id="diamond-2">
-      <div class="card-header">
-        <div class="card-accent">
-          <div class="accent-rect accent-rect-1"></div>
-          <div class="accent-rect accent-rect-2"></div>
-          <div class="accent-rect accent-rect-3"></div>
+      <!-- Card 2: Intelligent Capture -->
+      <div class="service-card" id="diamond-2">
+        <div class="card-header">
+          <span class="card-num">02</span>
+          <div class="icon-wrapper">
+            <img
+              src="/pin-icon.png"
+              alt="Intelligent Capture"
+              class="service-icon"
+              width="46"
+              height="46"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <div class="icon-wrapper">
-          <img
-            src="/pin-icon.webp"
-            alt="Intelligent Capture"
-            class="service-icon"
-            width="60"
-            height="60"
-            loading="lazy"
-          />
+        <div class="card-content" id="diamond-content-2">
+          <h3>Intelligent<br />Capture</h3>
+          <p>
+            Your business should never sleep. We implement 'Always-On' technology
+            that secures leads the moment they express interest.
+          </p>
         </div>
+        <div class="card-hair"><i></i></div>
       </div>
-      <div class="card-content" id="diamond-content-2">
-        <h3>Intelligent Capture</h3>
-        <p>
-          Your business should never sleep. We implement 'Always-On' technology
-          that secures leads the moment they express interest.
-        </p>
-      </div>
-    </div>
 
-    <!-- Card 3: Client Retention -->
-    <div class="service-card" id="diamond-3">
-      <div class="card-header">
-        <div class="card-accent">
-          <div class="accent-rect accent-rect-1"></div>
-          <div class="accent-rect accent-rect-2"></div>
-          <div class="accent-rect accent-rect-3"></div>
+      <!-- Card 3: Client Retention -->
+      <div class="service-card" id="diamond-3">
+        <div class="card-header">
+          <span class="card-num">03</span>
+          <div class="icon-wrapper">
+            <img
+              src="/funnel-icon.png"
+              alt="Client Retention"
+              class="service-icon"
+              width="46"
+              height="46"
+              loading="lazy"
+            />
+          </div>
         </div>
-        <div class="icon-wrapper">
-          <img
-            src="/funnel-icon.webp"
-            alt="Client Retention"
-            class="service-icon"
-            width="60"
-            height="60"
-            loading="lazy"
-          />
+        <div class="card-content" id="diamond-content-3">
+          <h3>Client<br />Retention</h3>
+          <p>
+            We don't just find customers; we keep them. Our systems automatically
+            re-engage past leads and drive repeat business.
+          </p>
         </div>
-      </div>
-      <div class="card-content" id="diamond-content-3">
-        <h3>Client Retention</h3>
-        <p>
-          We don't just find customers; we keep them. Our systems automatically
-          re-engage past leads and drive repeat business.
-        </p>
+        <div class="card-hair"><i></i></div>
       </div>
     </div>
   </div>
 </section>
-
-<style is:global>
-  .scene-2 {
-    background-color: var(--color-teal);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  /* Single card (appears first) */
-  .card-single {
-    position: absolute;
-    width: 280px;
-    height: 340px;
-    opacity: 0;
-    background: var(--color-white);
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  }
-
-  /* Three cards container */
-  .cards-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 48px;
-    opacity: 0;
-    padding: 40px 24px;
-  }
-
-  /* Individual service card */
-  .service-card {
-    width: 380px;
-    min-height: 340px;
-    background: var(--color-white);
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Card header row (accent + icon) */
-  .card-header {
-    display: flex;
-    gap: 2em;
-    align-items: flex-start;
-    padding: 0;
-  }
-
-  /* Orange accent with white rectangles */
-  .card-accent {
-    width: 80px;
-    height: 80px;
-    background: var(--color-gold);
-    border-radius: 0 0 16px 0;
-    position: relative;
-    flex-shrink: 0;
-  }
-
-  .accent-rect {
-    position: absolute;
-    background: var(--color-white);
-    border-radius: 2px;
-  }
-
-  .accent-rect-1 {
-    width: 20px;
-    height: 6px;
-    top: 12px;
-    left: 8px;
-  }
-
-  .accent-rect-2 {
-    width: 14px;
-    height: 6px;
-    top: 24px;
-    left: 8px;
-  }
-
-  .accent-rect-3 {
-    width: 8px;
-    height: 6px;
-    top: 36px;
-    left: 8px;
-  }
-
-  .icon-wrapper {
-    padding: 16px 24px 0 0;
-  }
-
-  .service-icon {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
-
-  /* Card content */
-  .card-content {
-    padding: 32px;
-    text-align: left;
-    opacity: 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-  }
-
-  .card-content h3 {
-    font-family: var(--font-serif);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--color-slate);
-    margin-bottom: 12px;
-  }
-
-  .card-content p {
-    font-family: var(--font-sans-serif);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-slate);
-    line-height: 1.6;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .cards-container {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .service-card {
-      width: 100%;
-      max-width: 320px;
-      min-height: auto;
-    }
-
-    .card-single {
-      width: 280px;
-      height: 300px;
-    }
-
-    .card-content {
-      padding: 16px 20px 24px;
-      gap: 0em;
-    }
-
-    .card-content h3 {
-      font-size: 18px;
-    }
-
-    .card-content p {
-      font-size: 13px;
-    }
-  }
-</style>

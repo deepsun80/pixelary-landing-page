@@ -3,104 +3,43 @@
 ---
 
 <section class="scene scene-1" id="scene-1">
+  <div class="masthead-rail">
+    <div class="row eyebrow">
+      <span>Digital Growth Studio</span><span>Austin, Texas</span><span>Web · Capture · Retention</span>
+    </div>
+    <div class="rule"></div>
+  </div>
   <div class="hero-content">
     <img
-      src="/logo-color.webp"
+      src="/logo-pixelary.png"
       alt="Pixelary"
       class="hero-logo"
       id="hero-logo"
-      width="600"
-      height="180"
+      width="918"
+      height="401"
       fetchpriority="high"
       decoding="async"
     />
-    <p class="hero-tagline" id="hero-tagline">Innovation, Growth, Success</p>
+    <div class="hero-rules"><i></i><i></i></div>
+    <div class="hero-tagline" id="hero-tagline">
+      <span>Innovation</span><i></i><span>Growth</span><i></i><span>Success</span>
+    </div>
+    <p class="hero-sub">
+      We build lightning-fast websites optimized for local search &amp; turning passive traffic into
+      qualified leads.
+    </p>
   </div>
   <div class="scroll-indicator" id="scroll-indicator">
+    <span class="lbl">Scroll</span>
     <svg
-      width="24"
-      height="24"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
+      stroke-width="1.25"
     >
       <path d="M7 10l5 5 5-5"></path>
     </svg>
   </div>
 </section>
-
-<style>
-  .scene-1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-light-gray);
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .hero-logo {
-    width: min(600px, 80vw);
-    height: auto;
-    z-index: 1001;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-
-  .hero-tagline {
-    font-family: var(--font-cursive);
-    font-size: clamp(24px, 4vw, 36px);
-    font-weight: 400;
-    color: var(--color-slate);
-    text-align: center;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .hero-tagline::before,
-  .hero-tagline::after {
-    content: '';
-    width: 40px;
-    height: 2px;
-    background-color: var(--color-slate);
-    flex-shrink: 0;
-  }
-
-  .scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    color: #2d2d2d;
-    opacity: 0.6;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(8px);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .hero-logo {
-      width: min(300px, 80vw);
-    }
-
-    .scroll-indicator {
-      bottom: 24px;
-    }
-  }
-</style>

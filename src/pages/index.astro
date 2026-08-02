@@ -137,7 +137,6 @@ import Footer from '../components/Footer.astro';
   // ===== SCENE 2: Services Animation =====
 
   // Set initial states
-  gsap.set('#diamond-single', { opacity: 0 });
   gsap.set('#diamonds-container', { opacity: 0 });
   gsap.set('#diamond-1', { x: 300 });
   gsap.set('#diamond-3', { x: -300 });
@@ -156,29 +155,14 @@ import Footer from '../components/Footer.astro';
     },
   });
 
-  // Step 1: Single diamond fades in (0% - 15% of timeline)
-  scene2Tl.to('#diamond-single', {
+  // Pause before diamonds appear (0% - 25%)
+  scene2Tl.to({}, { duration: 0.25 });
+
+  // Step 2: Three diamonds fade in (25% - 35%)
+  scene2Tl.to('#diamonds-container', {
     opacity: 1,
-    duration: 0.15,
-  });
-
-  // Pause - diamond sits visible (15% - 25%)
-  scene2Tl.to({}, { duration: 0.1 });
-
-  // Step 2: Single diamond fades out, three diamonds fade in (25% - 35%)
-  scene2Tl.to('#diamond-single', {
-    opacity: 0,
     duration: 0.1,
   });
-
-  scene2Tl.to(
-    '#diamonds-container',
-    {
-      opacity: 1,
-      duration: 0.1,
-    },
-    '<',
-  ); // Same time as above
 
   // Step 3: Diamonds spread horizontally (35% - 60%)
   scene2Tl.to(
@@ -276,10 +260,7 @@ import Footer from '../components/Footer.astro';
   const btnGetInTouch = document.getElementById('btn-get-in-touch');
   if (btnGetInTouch) {
     btnGetInTouch.addEventListener('click', () => {
-      const btnSend = document.getElementById('btn-send');
-      if (btnSend) {
-        btnSend.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.getElementById('scene-3')?.scrollIntoView({ behavior: 'smooth' });
     });
   }
 </script>

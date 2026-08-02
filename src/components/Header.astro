@@ -5,75 +5,14 @@
 <header class="header" id="header">
   <div class="header-inner">
     <img
-      src="/logo-color.webp"
+      src="/logo-pixelary.png"
       alt="Pixelary"
       class="header-logo"
       id="header-logo"
-      width="200"
-      height="60"
+      width="918"
+      height="401"
     />
-    <button class="btn-get-in-touch" id="btn-get-in-touch">Get in Touch</button>
+    <div class="header-meta eyebrow"><span>Digital Growth Studio — Austin, TX</span></div>
+    <button class="btn" id="btn-get-in-touch">Get in Touch</button>
   </div>
 </header>
-
-<style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    background-color: #ffffff;
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(-100%);
-  }
-
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .header-logo {
-    height: 60px;
-    width: auto;
-    opacity: 0;
-  }
-
-  .btn-get-in-touch {
-    padding: 10px 24px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--color-white);
-    background: var(--color-gold);
-    border: 2px solid var(--color-slate);
-    border-radius: 6px;
-    cursor: pointer;
-    transition:
-      background-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .btn-get-in-touch:hover {
-    background: var(--color-gold-hover);
-    border: 2px solid var(--color-teal);
-    transform: scale(1.02);
-  }
-
-  @media (max-width: 768px) {
-    .header-inner {
-      padding: 0 16px;
-    }
-
-    .btn-get-in-touch {
-      padding: 8px 18px;
-      font-size: 13px;
-    }
-  }
-</style>

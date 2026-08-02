@@ -11,23 +11,37 @@
   <div class="scene-3-content">
     <!-- Left side: Text -->
     <div class="contact-text" id="contact-text">
-      <h2>Ready to Scale?</h2>
+      <span class="eyebrow eyebrow-lg">Request a Quote</span>
+      <h2>Ready to <em>Scale?</em></h2>
+      <div class="hr"></div>
       <p>
-        Stop losing leads to outdated systems. <br />
-        Let's build the digital infrastructure that turns visitors into loyal clients.
+        Stop losing leads to outdated systems. Let's build the digital infrastructure that turns
+        visitors into loyal clients.
       </p>
     </div>
 
     <!-- Right side: Contact form -->
     <div class="contact-form-wrapper" id="contact-form-wrapper">
       <form class="contact-form" id="contact-form">
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="email" name="email" placeholder="Email Address" required />
-        <textarea name="message" placeholder="Your Message" rows="4" required
-        ></textarea>
-        <button type="submit" class="btn-send" id="btn-send"
-          >Send Message</button
-        >
+        <div>
+          <label class="form-label" for="f-name">Full Name</label>
+          <input id="f-name" type="text" name="name" placeholder="Jane Whitmore" required />
+        </div>
+        <div>
+          <label class="form-label" for="f-email">Email Address</label>
+          <input id="f-email" type="email" name="email" placeholder="jane@company.com" required />
+        </div>
+        <div>
+          <label class="form-label" for="f-msg">Your Message</label>
+          <textarea
+            id="f-msg"
+            name="message"
+            placeholder="Tell us about your business…"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-clay btn-send" id="btn-send">Send Message</button>
         <p class="form-status" id="form-status"></p>
       </form>
     </div>
@@ -86,222 +100,3 @@
     });
   </script>
 </section>
-
-<style is:global>
-  .scene-3 {
-    background-color: var(--color-light-gray);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* Diagonal gradient backgrounds - two layers */
-  .gradient-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    opacity: 0;
-  }
-
-  /* Dark gold layer (appears first) */
-  .gradient-gold {
-    background: linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 55%,
-      var(--color-gold) 55%,
-      var(--color-gold) 100%
-    );
-  }
-
-  /* Light gold layer (appears second, on top) */
-  .gradient-light {
-    background: linear-gradient(
-      135deg,
-      transparent 0%,
-      transparent 40%,
-      var(--color-light-gold) 40%,
-      var(--color-light-gold) 55%,
-      transparent 55%,
-      transparent 100%
-    );
-  }
-
-  /* Content container */
-  .scene-3-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    width: 100%;
-    padding: 0 0 0 24px;
-    gap: 60px;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Left side text */
-  .contact-text {
-    flex: 1;
-  }
-
-  .contact-text h2 {
-    font-family: var(--font-cursive);
-    font-size: clamp(56px, 6vw, 80px);
-    font-weight: 400;
-    color: var(--color-slate);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .contact-text p {
-    font-family: var(--font-sans-serif);
-    font-size: clamp(18px, 2vw, 20px);
-    font-weight: 400;
-    color: var(--color-slate);
-    line-height: 1.6;
-  }
-
-  /* Contact form wrapper */
-  .contact-form-wrapper {
-    width: 400px;
-    z-index: 1;
-  }
-
-  .contact-form {
-    background: var(--color-white);
-    border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .form-heading {
-    font-family: var(--font-serif);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--color-slate);
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    font-family: var(--font-sans-serif);
-    font-size: 16px;
-    padding: 14px 18px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: var(--color-white);
-    color: var(--color-slate);
-    outline: none;
-    transition: border-color 0.2s ease;
-  }
-
-  .contact-form input::placeholder,
-  .contact-form textarea::placeholder {
-    color: #999999;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: var(--color-teal);
-  }
-
-  .contact-form textarea {
-    resize: none;
-  }
-
-  .btn-send {
-    font-family: var(--font-sans-serif);
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--color-white);
-    background: var(--color-gold);
-    border: 2px solid var(--color-slate);
-    border-radius: 6px;
-    padding: 14px 32px;
-    cursor: pointer;
-    transition:
-      background-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .btn-send:hover {
-    background: var(--color-gold-hover);
-    border: 2px solid var(--color-teal);
-    transform: scale(1.02);
-  }
-
-  .btn-send:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .form-status {
-    text-align: center;
-    margin-top: 8px;
-    font-family: var(--font-sans-serif);
-    font-size: 14px;
-  }
-
-  .form-status.success {
-    color: #1aaa62;
-  }
-
-  .form-status.error {
-    color: #f54335;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .scene-3-content {
-      flex-direction: column;
-      text-align: center;
-      gap: 40px;
-      padding: 40px 24px;
-    }
-
-    .contact-text {
-      order: 1;
-    }
-
-    .contact-form-wrapper {
-      width: 100%;
-      order: 2;
-    }
-
-    .gradient-gold {
-      background: linear-gradient(
-        160deg,
-        transparent 0%,
-        transparent 70%,
-        var(--color-gold) 70%,
-        var(--color-gold) 100%
-      );
-    }
-
-    .gradient-light {
-      background: linear-gradient(
-        160deg,
-        transparent 0%,
-        transparent 50%,
-        var(--color-light-gold) 50%,
-        var(--color-light-gold) 70%,
-        transparent 70%,
-        transparent 100%
-      );
-    }
-
-    .contact-form {
-      padding: 24px;
-    }
-  }
-</style>

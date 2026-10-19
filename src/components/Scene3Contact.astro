@@ -4,8 +4,8 @@
 
 <section class="scene scene-3" id="scene-3">
   <!-- Diagonal gradient backgrounds - two layers for sequential animation -->
-  <div class="gradient-layer gradient-gold" id="gradient-gold"></div>
-  <div class="gradient-layer gradient-light" id="gradient-light"></div>
+  <canvas class="gradient-layer gradient-gold" id="gradient-gold" aria-hidden="true"></canvas>
+  <canvas class="gradient-layer gradient-light" id="gradient-light" aria-hidden="true"></canvas>
 
   <!-- Content container -->
   <div class="scene-3-content">
@@ -48,6 +48,58 @@
   </div>
 
   <script>
+    // Pixel-cell diagonal fold: two dithered bands drawn on canvases (seeded, deterministic)
+    const goldCv = document.getElementById('gradient-gold') as HTMLCanvasElement | null;
+    const lightCv = document.getElementById('gradient-light') as HTMLCanvasElement | null;
+    const sceneEl = document.getElementById('scene-3');
+
+    const drawFold = () => {
+      if (!goldCv || !lightCv || !sceneEl) return;
+      const W = sceneEl.clientWidth;
+      const H = sceneEl.clientHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const cell = 9;
+      const b1 = 0.42;
+      const b2 = 0.56;
+      const spread = 110;
+      const cs = getComputedStyle(document.documentElement);
+      const pale = cs.getPropertyValue('--clay-pale').trim();
+      const light = cs.getPropertyValue('--clay-light').trim();
+      const ctxs = [goldCv, lightCv].map((cv) => {
+        cv.width = W * dpr;
+        cv.height = H * dpr;
+        const c = cv.getContext('2d')!;
+        c.scale(dpr, dpr);
+        c.clearRect(0, 0, W, H);
+        return c;
+      });
+      const [gold, soft] = ctxs;
+      gold.fillStyle = light;
+      soft.fillStyle = pale;
+
+      const S = W + H;
+      const sp = spread / S;
+      let seed = 7;
+      const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+      const flip = (t: number, b: number) => {
+        const d = t - b;
+        if (Math.abs(d) > sp) return d > 0;
+        const p = 0.5 + 0.5 * (d / sp);
+        return rnd() < p * p * (3 - 2 * p);
+      };
+      for (let gy = 0; gy < H; gy += cell) {
+        for (let gx = 0; gx < W; gx += cell) {
+          const t = (gx + gy + cell) / S;
+          const in2 = flip(t, b2);
+          const in1 = flip(t, b1);
+          if (in2) gold.fillRect(gx, gy, cell, cell);
+          else if (in1) soft.fillRect(gx, gy, cell, cell);
+        }
+      }
+    };
+    drawFold();
+    if (sceneEl) new ResizeObserver(drawFold).observe(sceneEl);
+
     const form = document.getElementById(
       'contact-form',
     ) as HTMLFormElement | null;

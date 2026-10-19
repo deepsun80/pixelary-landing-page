@@ -39,7 +39,7 @@ import Footer from '../components/Footer.astro';
   });
 
   // Fade out tagline (0% - 30%)
-  scene1Tl.to('#hero-tagline', {
+  scene1Tl.to(['#hero-tagline', '#hero-sub'], {
     opacity: 0,
     y: -20,
     duration: 0.3,
